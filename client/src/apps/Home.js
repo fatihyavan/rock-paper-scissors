@@ -6,7 +6,7 @@ import Game from '../components/Game';
 export default function Home() {
   const [begin,setBegin] = useState(false);
   const openScene = () =>{
-    setBegin(!(begin));
+    setBegin(true);
   }
   return (
     <div className='text-3xl font-bold  bg-red-900'>
@@ -15,8 +15,9 @@ export default function Home() {
       <div className='flex bg-blue-200'>
         <Newspaper size={32} />
       </div>
-      <button onClick={openScene}>Oyunu Başlat</button>
+      {begin ? <div></div> : <button onClick={openScene}>Oyunu Başlat</button>}
       {begin && <Game />}
+     
     </div>
   )
 }
