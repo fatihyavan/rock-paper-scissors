@@ -4,23 +4,28 @@ import rock from '../images/rock.png'
 import scissors from '../images/scissors.png'
 
 export default function Game() {
-
-  const [select,setSelect] = useState("a"); 
-  const selectRock = ()=>{
-   setSelect("tas");
+  const [choice,setChoice] = useState("");
+  
+  const makeChoice = (e)=>{
+    console.log(e.target.value);
+    console.log(e.target.dataset.id);
+    console.log("bbb");
+   setChoice(e.target.dataset.id);
   };
 
+useEffect(()=>{
+  console.log(choice);
+},[choice]);
 
   return (
     <div>
       <div className='flex justify-center'> Taş,kağıt,makastan birini seçiniz</div>
       <div className='flex justify-center space-x-20 '>
-        <button onSubmit={selectRock} ><img src={rock} alt={rock}></img></button>
-        <button ><img src={paper} alt={paper}></img></button>
-        <button ><img src={scissors} alt={scissors}></img></button>
+        <div data-id="rock" onClick={makeChoice} ><img src={rock} alt={rock}></img></div>
+        <div data-id="paper" onClick={makeChoice} ><img src={paper} alt={paper}></img></div>
+        <div data-id="scissor" onClick={makeChoice} ><img src={scissors} alt={scissors}></img></div>
         
       </div>
-      <div>{select}</div>
     </div>
      
   )
