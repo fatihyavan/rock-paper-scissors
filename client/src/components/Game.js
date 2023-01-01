@@ -49,6 +49,18 @@ export default function Game({user}) {
     setRobotChoice(choiceList[Math.floor(Math.random()*choiceList.length)]);
   }
 
+
+  const updateUserInfo = (win,totalPlayed)=>{
+    axios
+      .post("/score/updatescore",{win,totalPlayed,user_name:user}
+      .then((res)=>{console.log(res);}))
+      .catch((err)=>console.log(err))
+  }
+
+  useEffect(()=>{
+    return updateUserInfo(win,totalPlayed);
+  },[]);
+
   function calculateWin(){
   if(choice==="rock"){
     switch(robotChoice){

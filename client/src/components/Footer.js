@@ -6,7 +6,7 @@ export default function Scoreboard({user}) {
 
    const getAll = () => {
     axios
-    .get('/score/getallscore')
+    .get('/score/getscore',{where: {user_name:user}})
     .then((res)=>{
       console.log(res.data);
         setScoreBoard(res.data);
@@ -14,14 +14,7 @@ export default function Scoreboard({user}) {
         
     }
 
-    const tablerow = () => {
-      return scoreboard.map((key,index)=>{
-        for(let element in key){
-          return(<tr>{key[element]}</tr>)
-        }
-      });
-    }
-console.log(tablerow);
+  
   useEffect(()=>{
     getAll();
   },[]);
@@ -30,17 +23,10 @@ console.log(tablerow);
     <div>
       {/* <div className='bg-yellow-500'>Scoreboard </div>
       <div id='scoreboard'></div> */}
-      <div className=' h-64'>
-      <table>
-        <thead>
-          <tr>Username</tr>
-          <tr>Win</tr>
-          <tr>Total Play</tr>
-        </thead>
-        <tbody id='element'>
-         {tablerow}
-        </tbody>
-      </table>
+      <div className='flex justify-center space-x-12 h-64'>
+        <div>Kullanıcı Adı</div>
+        <div>Kazanma Saysısı</div>
+        <div>Toplam Oyun Sayısı</div>
       </div>
     </div>
   )
