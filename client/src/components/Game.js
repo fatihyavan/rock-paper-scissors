@@ -8,8 +8,8 @@ export default function Game({user}) {
   const [choice,setChoice] = useState("");
   const [robotChoice,setRobotChoice] = useState("");
   const [result,setResult] = useState("");
-  const [win,setWin]= useState();
-  const [totalPlayed,setTotalPlayed] = useState();
+  const [win,setWin]= useState(0);
+  const [totalPlayed,setTotalPlayed] = useState(0);
 
 
   const getUserInfo = ()=>{
