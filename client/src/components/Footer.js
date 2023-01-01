@@ -4,9 +4,6 @@ import React, { useEffect, useState } from 'react'
 export default function Scoreboard({user,win,totalPlayed}) {
 
 
- 
-
-
 
   return (
     <div>

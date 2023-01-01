@@ -13,8 +13,8 @@ export default function Game({user}) {
   const [totalPlayed,setTotalPlayed] = useState(0);
 
 
-  const getUserInfo = ()=>{
-      axios
+  const getUserInfo =async ()=>{
+     await axios
         .post('/score/getscore',{user_name:user})
         .then((res)=>{
           console.log(res);
@@ -37,13 +37,14 @@ export default function Game({user}) {
   useEffect(()=>{
     setTotalPlayed(totalPlayed+1);
     calculateWin();
-    if(setResult==="Kazandın!"){
-      axios
-      .post("/score/updatescore",{win,totalPlayed,user_name:user}
-      .then((res)=>{console.log(res);}))
-      .catch((err)=>console.log(err))
-    }
   },[choice,robotChoice]);
+
+  const updateUserInfo = async ()=>{
+   await axios
+    .post("/score/updatescore",{win:win,totalPlayed:totalPlayed,user_name:user})
+    .then((res)=>{console.log(res);})
+    .catch((err)=>console.log(err))
+  };
 
 
   const makeChoice = (e)=>{
@@ -64,7 +65,7 @@ export default function Game({user}) {
         break
       case 'scissors':
          setResult('Kazandın!')
-         setWin(win+1)
+         setWin(win + 1)
         break
       default:
          setResult('Berabere...')
@@ -115,6 +116,7 @@ export default function Game({user}) {
         <div className='text-xl'>Sizin seçiminiz : {choice}</div>
         <div className='text-xl'>Robotun seçimi : {robotChoice}</div>
         <div className='text-xl text-amber-900'>Sonuç : {result}</div>
+        <button className='text-2xl text-amber-800 pb-6' onClick={updateUserInfo}>Skorumu kaydet!</button>
       </div>
      <Footer user={user} win={win} totalPlayed={totalPlayed} />
     </div>
