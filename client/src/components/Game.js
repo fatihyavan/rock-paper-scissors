@@ -3,6 +3,7 @@ import paper from '../images/paper.png'
 import rock from '../images/rock.png'
 import scissors from '../images/scissors.png'
 import axios from 'axios'
+import Footer from "../components/Footer"
 
 export default function Game({user}) {
   const [choice,setChoice] = useState("");
@@ -16,6 +17,7 @@ export default function Game({user}) {
       axios
         .post('/score/getscore',{user_name:user})
         .then((res)=>{
+          console.log(res);
           setWin(res.data.win);
           setTotalPlayed(res.data.totalPlayed);
         })
@@ -33,7 +35,6 @@ export default function Game({user}) {
   },[]);
 
   useEffect(()=>{
-    console.log(win);
     setTotalPlayed(totalPlayed+1);
     calculateWin();
     if(setResult==="Kazandın!"){
@@ -115,11 +116,8 @@ export default function Game({user}) {
         <div className='text-xl'>Robotun seçimi : {robotChoice}</div>
         <div className='text-xl text-amber-900'>Sonuç : {result}</div>
       </div>
-      
+     <Footer user={user} win={win} totalPlayed={totalPlayed} />
     </div>
      
   )
 }
-
-// onClick={(rock)=>makeChoice(rock)}
-// onClick={makeChoice(paper)}

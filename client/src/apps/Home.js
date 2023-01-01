@@ -52,7 +52,7 @@ export default function Home() {
 
       {begin && <Game user={user} />}
       <Link to="/princess"><div className='bg-gray-500 h-32 grid justify-items-center items-center  text-black-600/75 text-2xl hover:text-gray-600'>Prensesi Kurtar Modu</div></Link>
-      {begin && <Footer user={user} />}
+
     </div>
   )
 }
