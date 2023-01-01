@@ -3,7 +3,12 @@ require("dotenv").config();
 const app = express();
 const scoreboard = require("./src/router/scoreRouter");
 const sequelize = require("./src/config/database");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/score",scoreboard);
 

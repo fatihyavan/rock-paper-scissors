@@ -10,12 +10,12 @@ const getScore = async (req,res)=>{
 }
 
 const createScore = async(req,res)=>{
-  try {
-    const score = await scoreboard.create(req.body);
-    res.json("Userın scoreu oluştuıruldu");
-  } catch (error) {
-    console.log(error);
-  }
+ const findUser = await scoreboard.findOne({where:{user_name:req.body.user_name}});
+ if(!findUser){
+        const score = await scoreboard.create({user_name:req.body.user_name,win:0,totalPlayed:0});
+        res.json("Userın scoreu oluştuıruldu");
+ }
+ res.send(findUser)
 }
 
 const updateScore = async(req,res)=>{
@@ -27,8 +27,18 @@ const updateScore = async(req,res)=>{
     }
 }
 
+const getAllScore = async(req,res)=>{
+    try {
+       const score =  await scoreboard.findAll();
+       res.send(score);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports={
     getScore,
     createScore,
     updateScore,
+    getAllScore
 }

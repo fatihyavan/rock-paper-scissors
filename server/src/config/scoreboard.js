@@ -4,6 +4,7 @@ const sequelize = require("./database");
 const Scoreboard = sequelize.define("scoreboard",{
     user_name:{
         type: Sequelize.DataTypes.STRING,
+        unique: true,
         allowNull: false
     },
     win:{
