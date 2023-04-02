@@ -4,10 +4,10 @@
 Projede front-end teknolojisi olarak React, oyuncuların bilgilerini saklamak için Nodejs Back-end teknolojilerini kullandım.  Veritabanı olarak Postgresql uygulamasını kullandım. Ayrıca veritabanını docker ile ayağa kaldırdım.  
 
 ## Oyun İçi Görüntüler
-![Ana Ekran](./assets/1.png)
+![Ana Ekran](./client/public/1.png)
 
-![Oyun Modu Ekranı](./assets/2.png)
+![Oyun Modu Ekranı](./client/public/2.png)
 
-![Hasar Verme](./assets/3.png)
+![Hasar Verme](./client/public/3.png)
 
-![Oyun Sonlanma Ekranı](./assets/4.png)
+![Oyun Sonlanma Ekranı](./client/public/4.png)
